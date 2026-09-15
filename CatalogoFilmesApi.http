@@ -1,0 +1,6 @@
+@CatalogoFilmesApi_HostAddress = http://localhost:5244
+
+GET {{CatalogoFilmesApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
