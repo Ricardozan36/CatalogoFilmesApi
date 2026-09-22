@@ -15,7 +15,6 @@ namespace CatalogoFilmesApi.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Seed de dados iniciais
             modelBuilder.Entity<Diretor>().HasData(
                 new Diretor { Id = 1, Nome = "Christopher Nolan" },
                 new Diretor { Id = 2, Nome = "Quentin Tarantino" }

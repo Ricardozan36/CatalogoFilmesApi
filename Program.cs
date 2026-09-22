@@ -11,7 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// --- CONFIGURAÇÃO DO SWAGGER PARA ACEITAR TOKEN JWT ---
 builder.Services.AddSwaggerGen(c =>
 {
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -39,21 +38,17 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// --- 1. CONFIGURAÇÃO OBRIGATÓRIA DE CORS ---
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirTudo",
         builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 });
 
-// --- 2. CONFIGURAÇÃO DO BANCO DE DADOS (SQLite) ---
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// --- 3. INJEÇÃO DE DEPENDÊNCIA DO REPOSITÓRIO ---
 builder.Services.AddScoped<IFilmeRepository, FilmeRepository>();
 
-// --- 4. CONFIGURAÇÃO DA AUTENTICAÇÃO JWT ---
 var jwtKey = builder.Configuration["Jwt:Key"] ?? throw new InvalidOperationException("Chave JWT ausente");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -82,7 +77,6 @@ app.UseHttpsRedirection();
 
 app.UseCors("PermitirTudo");
 
-// Ativa a Autenticação ANTES da Autorização
 app.UseAuthentication(); 
 app.UseAuthorization();
 
