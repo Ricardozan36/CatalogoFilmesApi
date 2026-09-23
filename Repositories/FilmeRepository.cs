@@ -15,7 +15,7 @@ namespace CatalogoFilmesApi.Repositories
 
         public async Task<IEnumerable<Filme>> GetAllAsync()
         {
-            // O Include traz os dados do Diretor junto com o Filme
+            
             return await _context.Filmes.Include(f => f.Diretor).ToListAsync();
         }
 

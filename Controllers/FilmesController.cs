@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization; // <-- ADICIONADO PARA A AUTENTICAÇÃO
+using Microsoft.AspNetCore.Authorization;
 using CatalogoFilmesApi.Repositories;
 using CatalogoFilmesApi.Entities;
 using CatalogoFilmesApi.DTOs;
@@ -17,7 +17,7 @@ namespace CatalogoFilmesApi.Controllers
             _repository = repository;
         }
 
-        // GET: api/filmes 
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<FilmeResponseDTO>>> GetFilmes()
         {
@@ -31,15 +31,15 @@ namespace CatalogoFilmesApi.Controllers
                 NomeDiretor = f.Diretor?.Nome ?? "Desconhecido"
             });
             
-            return Ok(filmesDto); // Retorna HTTP 200
+            return Ok(filmesDto);
         }
 
-        // GET: api/filmes/5 
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<FilmeResponseDTO>> GetFilme(int id)
         {
             var filme = await _repository.GetByIdAsync(id);
-            if (filme == null) return NotFound("Filme não encontrado."); // Retorna HTTP 404
+            if (filme == null) return NotFound("Filme não encontrado.");
 
             var filmeDto = new FilmeResponseDTO
             {
@@ -49,14 +49,14 @@ namespace CatalogoFilmesApi.Controllers
                 NomeDiretor = filme.Diretor?.Nome ?? "Desconhecido"
             };
             
-            return Ok(filmeDto); // Retorna HTTP 200
+            return Ok(filmeDto);
         }
 
-        // POST: api/filmes 
+        
         [HttpPost]
         public async Task<ActionResult<FilmeResponseDTO>> PostFilme([FromBody] FilmeRequestDTO request)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState); // Retorna HTTP 400
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var novoFilme = new Filme
             {
@@ -67,36 +67,36 @@ namespace CatalogoFilmesApi.Controllers
 
             var filmeCriado = await _repository.AddAsync(novoFilme);
 
-            return CreatedAtAction(nameof(GetFilme), new { id = filmeCriado.Id }, request); // Retorna HTTP 201
+            return CreatedAtAction(nameof(GetFilme), new { id = filmeCriado.Id }, request);
         }
 
-        // PUT: api/filmes/5 
+        
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFilme(int id, [FromBody] FilmeRequestDTO request)
         {
-            if (id <= 0) return BadRequest("ID inválido."); // Retorna HTTP 400
+            if (id <= 0) return BadRequest("ID inválido.");
 
             var filmeExistente = await _repository.GetByIdAsync(id);
-            if (filmeExistente == null) return NotFound("Filme não encontrado."); // Retorna HTTP 404
+            if (filmeExistente == null) return NotFound("Filme não encontrado.");
 
             filmeExistente.Titulo = request.Titulo;
             filmeExistente.AnoLancamento = request.AnoLancamento;
             filmeExistente.DiretorId = request.DiretorId;
 
             await _repository.UpdateAsync(filmeExistente);
-            return NoContent(); // Retorna HTTP 204
+            return NoContent();
         }
 
-        // DELETE: api/filmes/5 
-        [Authorize] // <-- ADICIONADO AQUI PARA BLOQUEAR A EXCLUSÃO SEM TOKEN
+        
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFilme(int id)
         {
             var filme = await _repository.GetByIdAsync(id);
-            if (filme == null) return NotFound("Filme não encontrado."); // Retorna HTTP 404
+            if (filme == null) return NotFound("Filme não encontrado.");
 
             await _repository.DeleteAsync(id);
-            return NoContent(); // Retorna HTTP 204
+            return NoContent();
         }
     }
 }

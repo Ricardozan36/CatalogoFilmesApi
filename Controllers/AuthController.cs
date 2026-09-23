@@ -20,7 +20,7 @@ namespace CatalogoFilmesApi.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginModel model)
         {
-            // Simulação de um usuário válido para o escopo do trabalho
+            
             if (model.Username == "admin" && model.Password == "admin123")
             {
                 var issuer = _configuration["Jwt:Issuer"];
@@ -45,7 +45,7 @@ namespace CatalogoFilmesApi.Controllers
         }
     }
 
-    // Classe auxiliar para receber os dados
+    
     public class LoginModel
     {
         public string Username { get; set; } = string.Empty;

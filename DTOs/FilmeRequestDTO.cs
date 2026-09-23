@@ -4,7 +4,7 @@ namespace CatalogoFilmesApi.DTOs
 {
     public class FilmeRequestDTO
     {
-        // Validações obrigatórias dos dados de entrada
+        
         [Required(ErrorMessage = "O título do filme é obrigatório.")]
         [StringLength(100, ErrorMessage = "O título não pode exceder 100 caracteres.")]
         public string Titulo { get; set; } = string.Empty;
