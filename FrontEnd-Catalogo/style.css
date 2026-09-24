@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #141414;
+    color: #e5e5e5;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #e50914;
+}
+
+.botoes-header {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #e5e5e5;
+    color: #e5e5e5;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: #e5e5e5;
+    color: #141414;
+}
+
+.btn-primary {
+    background: #e50914;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: #b20710;
+}
+
+
+main {
+    padding: 40px 50px;
+}
+
+.header-main {
+    margin-bottom: 30px;
+}
+
+.header-main h2 {
+    font-size: 2rem;
+    color: #fff;
+}
+
+.header-main p {
+    color: #808080;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 50px;
+    font-size: 1.2rem;
+    color: #808080;
+}
+
+
+.card-filme {
+    background-color: #2f2f2f;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 4px solid #e50914;
+}
+
+.card-filme:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.card-imagem {
+    height: 150px;
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #404040;
+}
+
+.card-imagem .material-icons {
+    font-size: 4rem;
+}
+
+.card-conteudo {
+    padding: 20px;
+}
+
+.card-titulo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.card-diretor {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+.badge-ano {
+    background: #e50914;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-conteudo {
+    background-color: #1a1a1a;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    border: 1px solid #333;
+    position: relative;
+}
+
+.fechar {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+.fechar:hover {
+    color: #fff;
+}
+
+.modal-conteudo h2 {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.grupo-input {
+    margin-bottom: 15px;
+}
+
+.grupo-input label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ccc;
+}
+
+
+.grupo-input input, 
+.grupo-input select {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: white;
+    font-size: 1rem;
+}
+
+.grupo-input input:focus, 
+.grupo-input select:focus {
+    outline: none;
+    border-color: #e50914;
+}
+
+
+.btn-delete {
+    background-color: transparent;
+    color: #808080;
+    border: none;
+    cursor: pointer;
+    float: right;
+    transition: 0.3s;
+}
+
+.btn-delete:hover {
+    color: #e50914;
+}

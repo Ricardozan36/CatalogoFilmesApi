@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Filmes</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span class="material-icons">movie_filter</span>
+            <h1>CineAPI</h1>
+        </div>
+        <div class="botoes-header">
+            <button id="btn-novo-filme" class="btn-primary">Novo Filme</button>
+            <button id="btn-login" class="btn-outline">Login Diretor</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="header-main">
+            <h2>Filmes em Destaque</h2>
+            <p>O seu acervo consumindo a API em C#</p>
+        </div>
+        
+        <div id="grid-filmes" class="grid-container">
+            <div class="loading">A carregar o catálogo...</div>
+        </div>
+    </main>
+
+    
+    <div id="modal-filme" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar">&times;</span>
+            <h2>Adicionar ao Catálogo</h2>
+            <form id="form-filme">
+                <div class="grupo-input">
+                    <label for="titulo">Título do Filme</label>
+                    <input type="text" id="titulo" required placeholder="Ex: A Origem">
+                </div>
+                
+                <div class="grupo-input">
+                    <label for="anoLancamento">Ano de Lançamento</label>
+                    <input type="number" id="anoLancamento" required placeholder="Ex: 2010">
+                </div>
+                
+                <div class="grupo-input">
+                    <label for="diretorId">Realizador</label>
+                    <select id="diretorId" required>
+                        <option value="" disabled selected>Escolha um realizador...</option>
+                        <option value="1">Christopher Nolan</option>
+                        <option value="2">Quentin Tarantino</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Guardar Filme</button>
+            </form>
+        </div>
+    </div>
+
+    
+    <div id="modal-login" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar-login">&times;</span>
+            <h2>Acesso Restrito</h2>
+            <form id="form-login">
+                <div class="grupo-input">
+                    <label for="username">Utilizador</label>
+                    <input type="text" id="username" required value="admin">
+                </div>
+                <div class="grupo-input">
+                    <label for="password">Palavra-passe</label>
+                    <input type="password" id="password" required value="admin123">
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
