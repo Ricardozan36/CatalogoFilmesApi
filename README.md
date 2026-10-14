@@ -26,7 +26,7 @@ Solução *Full-Stack* desenvolvida para a gestão de um catálogo de filmes e r
 
 ### 1. Iniciar a API (Back-end)
 1. Clone o repositório:
-   `git clone https://github.com/SEU_USUARIO/CatalogoFilmesApi.git`
+   `https://github.com/Ricardozan36/CatalogoFilmesApi.git`
 2. Aceda à pasta do projeto:
    `cd CatalogoFilmesApi`
 3. Restaure as dependências:
@@ -43,7 +43,7 @@ Solução *Full-Stack* desenvolvida para a gestão de um catálogo de filmes e r
 
 ## Documentação e Testes (Swagger)
 A API utiliza o Swagger para documentação interativa dos *endpoints*. 
-Com a aplicação a correr, aceda no navegador: `http://localhost:<porta>/swagger`
+Com a aplicação a correr, aceda no navegador: `http://localhost:5244/swagger`
 
 ## Autenticação e Exclusão de Filmes
 A rota de exclusão de filmes (`DELETE`) é protegida. O projeto demonstra esta segurança de duas formas:
